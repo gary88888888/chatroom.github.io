@@ -1,0 +1,79 @@
+<div class="background" style="height:100%;display: flex;justify-content: center; align-items: center; ">
+    <mat-card  style="background-color:#5d59d6 ;width: 60vw;">
+    <mat-card-header >
+        <mat-card-title><h1 style="color: white;">聊天室{{inputId}}</h1> </mat-card-title>
+       
+    </mat-card-header>
+    <mat-card-content style="padding:10px ;">
+        <mat-grid-list cols="10" rowHeight="fit" [style.height]="'600px'" [gutterSize]="'3px'">
+            <mat-grid-tile [colspan]="2" [rowspan]="10">
+                <mat-card style="width: 90%;height: 90%;background-color: beige;border-radius: 10px;">
+                    <div *ngFor="let user of users">
+                        <li style="font-size:1.5em ;">{{user.userName}}</li>
+                    </div>
+                </mat-card>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="8" [rowspan]="9">
+                <div  style="width: 90%;height: 90%;border-radius: 4px; background-color:#ecebeb;border-radius: 10px; overflow-y:scroll;" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+                    <mat-card-content>
+                        <div  style="margin:5px ;height: 90px;" *ngFor="let chat of chatHistory">
+                            <div [ngClass]="{'right': chat.userName == inputId , 'left': chat.userName != inputId}">
+                                <div class="header">
+                                    {{chat.userName}}
+                                </div>
+                                <div class="content">
+                                     {{chat.text}}
+                                </div>
+                               
+                            </div>
+
+                        </div>
+                        
+                    </mat-card-content>
+                    
+                    
+                    
+                </div>
+            </mat-grid-tile>
+            <mat-grid-tile [colspan]="8" [rowspan]="1">
+                <mat-card style="width: 90%;height: 60%;padding-top:2px;padding-bottom: 2px; background-color:#ecebeb;border-radius: 10px;" (keyup.enter)="emit()">
+                    
+                    <input type="text" style="width:auto; padding:5px 15px;background-color:#c6ffdc;outline: none; border:0 none;
+                    cursor:pointer; -webkit-border-radius: 5px;border-radius: 5px;position: relative;" [(ngModel)]="text">
+                    <button mat-button color="primary" style="margin:0px;right: 0px;float: right;" (click)="emit()" >Enter</button>
+                   
+                    
+                   
+                    
+                </mat-card>
+            </mat-grid-tile>
+        </mat-grid-list>
+    
+    </mat-card-content>
+    <mat-card-actions>
+    
+    </mat-card-actions>
+</mat-card>
+
+<div class="mask" *ngIf="!isLogin" style="position: absolute;background-color:rgba(0, 0, 0, 0.788); top: 0;bottom: 0;left: 0;right: 0;display: flex;justify-content: center; align-items: center;">
+<mat-card style="background-color:rgb(146, 183, 238) ;height: 60vh; width: 50vw;">
+    
+    <mat-card-content>
+        <mat-grid-list cols="1" rowHeight="fit" [style.height]="'50vh'" [gutterSize]="'1px'">
+            <mat-grid-tile [colspan]="1" [rowspan]="7"><mat-icon style="transform: scale(8);">person</mat-icon></mat-grid-tile>
+            <mat-grid-tile [colspan]="1" [rowspan]="3"><input type="text" [(ngModel)]="inputId" placeholder="Enter Your Name" style="width: 80%; padding:5px 15px;background-color:#ecebeb;outline: none; border:0 none;
+    cursor:pointer; -webkit-border-radius: 5px;border-radius: 5px;line-height: 60px;font-size: 60px; " ></mat-grid-tile>
+        <mat-grid-tile [colspan]="1" [rowspan]="3"><button mat-raised-button color="accent" style="font-size: large;" (click)="login()">登入</button></mat-grid-tile>
+    </mat-grid-list>
+        
+    </mat-card-content>
+
+    
+        
+    
+    
+
+</mat-card>
+</div>
+</div>
+

@@ -1,0 +1,49 @@
+.one{
+    background-color: blanchedalmond;
+}
+.name{
+    background-color: aqua;
+    border-radius: 1rem;
+    width: auto;
+}
+
+.left{
+    align-self: flex-start;
+    float: left;
+    
+}
+.left .content{
+    background: #979ae5;
+    color: white;
+    font-size: 15px;
+    border-radius: 0px 15px 15px 15px;
+    margin-top: 5px;
+    padding: 15px !important;
+    font-weight: 400;
+}
+.left .header{
+    font-size: 0.5rem;
+    text-align: left;
+}
+.right{
+    align-self: flex-end;
+    margin-right: 0;
+    float: right;
+    margin: 3px;
+    
+}
+.right .content{
+    background: white; 
+    color: #413177;
+    font-size: 15px;
+    font-weight: 400;
+    border-radius: 15px 0px 15px 15px;
+    padding: 15px !important;
+    margin-top: 5px;
+    margin-right: 0;
+    position: relative;
+}
+.right .header{
+    text-align: right;
+    font-size: 0.5rem;
+}
